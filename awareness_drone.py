@@ -24,15 +24,18 @@ while True:
     frame = drone.get_frame_read().frame
     x, y, w, h = detection.detect_biggest_face(face_detector, frame, previous_xywh=(x, y, w, h), tracker=tracker)
     nx, ny, size = detection.to_normalized_x_y_size(frame, x, y, w, h, draw_box=True)
+    cv2.imshow("drone video", frame)  # show that video
 
-    # 2. show the video on the screen
-    cv2.imshow("drone video", frame)
-
-    # 3. depending on what the user pressed, drive the drone
+    # 2. which key did the pilot press? drive the drone accordingly
     up_down_velocity, forward_velocity, turn_velocity, roll_velocity = 0, 0, 0, 0
 
-    # space = take picture
-    if key == ord(' '):
+    if key == ord('t'):
+        drone.takeoff()
+
+    if key == ord('l'):
+        drone.land()
+
+    if key == ord(' '):  # space = take picture
         snapshot_number = snapshot_number + 1
         cv2.imwrite(f'{snapshot_number}.jpg', frame)
 
