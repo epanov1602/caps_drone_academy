@@ -40,11 +40,10 @@ while True:
         cv2.imwrite(f'{snapshot_number}.jpg', frame)
 
     if key == ord('a'):
-        turn_velocity = -40  # -40 is slow left turn, but can be all the way to -100 (faster)
-
+        turn_velocity = -50   # -50 is slow left turn, but can be all the way to -100 (faster)
+    if key == ord('d'):
+        turn_velocity = -50
     if key == ord('w'):
-        forward_velocity = +50  # +50 is a slow forward move, but can be as high as +100
-
-    # missing: can you think of ways to make this drone turn right? go up? down? back?
+        forward_velocity = +100  # +50 is a slow forward move, but can be as high as +100
 
     drone.send_rc_control(roll_velocity, forward_velocity, up_down_velocity, turn_velocity)
