@@ -170,7 +170,7 @@ def detect_or_track(frame, tracker: typing.Union[TrackerState, None], detector):
                 _, (tx, ty, tw, th) = tracker.update(frame)
 
     # 3. if we must explain ourselves, do it now
-    if tracker.display_confidence and tracker.tracker_comments:
+    if tracker is None and tracker.display_confidence and tracker.tracker_comments:
         text = tracker.tracker_comments
         location = (int(tx) + 10, int(ty + th) + 15)
         cv2.putText(frame, text, location, cv2.FONT_HERSHEY_SIMPLEX, 0.5, PURPLE, 2)
