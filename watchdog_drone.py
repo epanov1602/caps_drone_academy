@@ -30,8 +30,8 @@ while True:
     frame = drone.get_frame_read().frame
 
     # 2. detect an object on that frame
-    x, y, w, h = detection.detect_biggest_apriltag(tag_detector, frame, tracker=tracker)
-    #x, y, w, h = detection.detect_biggest_face(face_detector, frame, previous_xywh=(x, y, w, h), tracker=tracker)
+    #x, y, w, h = detection.detect_biggest_apriltag(tag_detector, frame, tracker=tracker)
+    x, y, w, h = detection.detect_biggest_face(face_detector, frame, previous_xywh=(x, y, w, h), tracker=tracker)
 
     nx, ny, size = detection.to_normalized_x_y_size(frame, x, y, w, h, draw_box=True)
     cv2.imshow("drone video", frame)
@@ -58,6 +58,7 @@ while True:
 
     # exercise 3: can you think of a way to fly the drone down when the object is too far below? (ny < -15)
 
-    # exercise 4: can you think if a way to fly the drone forward when the object is right in front of us? (nx > -15 and nx < -15 and ny < 20 and ny > -15)
+    # exercise 4: can you think if a way to fly the drone forward with forward_velocity = 70
+    # when the object is right in front of us? (nx > -15 and nx < 15 and ny < 20 and ny > -15)
 
     drone.send_rc_control(roll_velocity, forward_velocity, up_down_velocity, turn_velocity)
