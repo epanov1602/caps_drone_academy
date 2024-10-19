@@ -58,21 +58,26 @@ while True:
         turn_velocity = -55 if last_seen_nx < 0 else +55
         status = "looking for object"
     else:
-        # -- otherwise turn towards the object
+        # -- otherwise fly towards the object
         if nx <= -15:
+            """the object is on the left!"""
+            status = f"turning left: nx={nx}"
             turn_velocity = -35
             roll_velocity = -40
-            status = f"object on the left: nx={nx}"
+
         if nx >= 15:
-            turn_velocity = +35
-            roll_velocity = +40
-            status = f"object on the right: nx={nx}"
+            status = f"turning right: nx={nx}"
+            """exercise 1: the object is on the right, can you make the drone turn right
+             by setting velocities like above?"""
+
         if ny - size / 2 >= 24:
-            up_down_velocity = 30
             status = f"object above: ny={ny}, size={size}"
+            """exercise 2: object is too far above, can you make the drone go up by setting up_down_velocity = 30?"""
+
         if ny + size / 2 <= -2:
-            up_down_velocity = -30
-            status = f"object below: ny={ny}, size={size}"
+            status = f"object us too far below: ny={ny}, size={size}"
+            """exercise 3: you want the drone to go down, right?"""
+
         if status == "":
             forward_velocity = 50
             status = "charge!"
