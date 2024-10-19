@@ -19,6 +19,8 @@ drone.streamon()  # start the video stream
 x, y, w, h = None, None, None, None
 last_seen_nx = 0
 
+following_what = "faces"
+
 # everything below happens in a "while" loop
 while True:
     # 0. which buttons did the user press?
@@ -29,13 +31,19 @@ while True:
         drone.takeoff()  # T = takeoff
     elif key == ord('f'):
         drone.flip_forward()  # F = flip forward
+    elif key == ord('q'):
+        following_what = "tags"
+    elif key == ord('w'):
+        following_what = "faces"
 
     # 1. get one video frame from drone camera
     frame = drone.get_frame_read().frame
 
     # 2. detect an object on that frame
-    x, y, w, h = detection.detect_biggest_apriltag(tag_detector, frame, tracker=tracker)
-    #x, y, w, h = detection.detect_biggest_face(face_detector, frame, previous_xywh=(x, y, w, h), tracker=tracker)
+    if following_what == "faces":
+        x, y, w, h = detection.detect_biggest_apriltag(tag_detector, frame, tracker=tracker)
+    if following_what == "tags":
+        x, y, w, h = detection.detect_biggest_face(face_detector, frame, previous_xywh=(x, y, w, h), tracker=tracker)
 
     # 3. convert X and Y into "normalized nX and nY" (which are = 0, 0 when object in the middle of the screen)
     nx, ny, size = detection.to_normalized_x_y_size(frame, x, y, w, h, draw_box=True)
@@ -61,11 +69,11 @@ while True:
         # -- otherwise turn towards the object
         if nx <= -15:
             turn_velocity = -35
-            roll_velocity = -40
+            roll_velocity = -25
             status = f"object on the left: nx={nx}"
         if nx >= 15:
             turn_velocity = +35
-            roll_velocity = +40
+            roll_velocity = +25
             status = f"object on the right: nx={nx}"
         if ny - size / 2 >= 24:
             up_down_velocity = 30
