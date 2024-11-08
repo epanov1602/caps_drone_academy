@@ -67,16 +67,15 @@ while True:
 
         if nx >= 15:
             status = f"turning right: nx={nx}"
-            """exercise 1: the object is on the right, can you make the drone turn right
-             by setting velocities like above?"""
+            """exercise 1: the object is on the right, can you set velocities to make the drone turn right? see above"""
 
         if ny - size / 2 >= 24:
             status = f"object above: ny={ny}, size={size}"
-            """exercise 2: object is too far above, can you make the drone go up by setting up_down_velocity = 30?"""
+            """exercise 2: the object is far above, can you make the drone go up by setting up_down_velocity = +30?"""
 
         if ny + size / 2 <= -2:
             status = f"object us too far below: ny={ny}, size={size}"
-            """exercise 3: you want the drone to go down, right?"""
+            """exercise 3: the object is below, you want the drone to go down, right?"""
 
         if status == "":
             forward_velocity = 50
