@@ -17,7 +17,7 @@ while True:
         sleep(0.01)
         continue
 
-    # 2. did the user press any buttons?
+    # 2. are some buttons pressed?
     if joystick0.get_button(0):
         print("button 0 pressed")
     if joystick0.get_button(1):
@@ -26,9 +26,14 @@ while True:
         print("button 2 pressed")
     # ... add more if you need
 
-    # 3. did the user push any sticks?
+    # 3. are some sticks pushed? (a typical stick normally has two axes: an up-down axis and a right-left axis)
     if joystick0.get_axis(0) > 0.1 or joystick0.get_axis(0) < -0.1:
         print("axis 0 is at " + str(joystick0.get_axis(0)))
     if joystick0.get_axis(1) > 0.1 or joystick0.get_axis(1) < -0.1:
         print("axis 1 is at " + str(joystick0.get_axis(1)))
     # ... add more if you need
+
+    ## 4. if I want button 0 to be a play-pretend takeoff, then my code is
+    #if joystick0.get_button(0):
+    #    print("drone taking off")  # with a real drone I should write: drone.takeoff()
+
