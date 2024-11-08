@@ -24,10 +24,11 @@ while True:
         print("button 1 pressed")
     if joystick0.get_button(2):
         print("button 2 pressed")
-    # ... add more if you want
+    # ... add more if you need
 
     # 3. did the user push any sticks?
-    if abs(joystick0.get_axis(0)) > 0.1:
+    if joystick0.get_axis(0) > 0.1 or joystick0.get_axis(0) < -0.1:
         print("axis 0 is at " + str(joystick0.get_axis(0)))
-    if abs(joystick0.get_axis(1)) > 0.1:
+    if joystick0.get_axis(1) > 0.1 or joystick0.get_axis(1) < -0.1:
         print("axis 1 is at " + str(joystick0.get_axis(1)))
+    # ... add more if you need
