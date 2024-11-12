@@ -18,7 +18,7 @@ ln -sf pycharm-*/bin/pycharm charm
 ```
 .
 
-And three commands to make a desktop icon for PyCharm
+And three commands to make a desktop icon for PyCharm:
 ```
 sudo cat > pycharm.desktop << END
 [Desktop Entry]
