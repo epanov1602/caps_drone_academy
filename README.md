@@ -13,7 +13,7 @@ sudo apt install python3 python3-pip build-essential libssl-dev libffi-dev pytho
 
 Two commands to extract PyCharm and make a shortcut `charm` in home directory:
 ```
-tar -xf pycharm-community-2023.1.4.tar.gz
+tar -xf pycharm-*.gz
 ln -sf pycharm-*/bin/pycharm charm
 ```
 .
