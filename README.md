@@ -4,7 +4,7 @@ We have some exciting drone projects to try. But first things first:
 # Installing PyCharm on Chromebook
 The video with detailed steps is here: https://youtu.be/SBgAQZ96O1U .
 
-Two commands to run possibly before PyCharm is downloaded
+Two commands to run (even before PyCharm is downloaded)
 ```
 sudo apt update
 sudo apt install python3 python3-pip build-essential libssl-dev libffi-dev python3-dev default-jdk
