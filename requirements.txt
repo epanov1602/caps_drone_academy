@@ -2,7 +2,6 @@ opencv-python~=4.10.0.84
 pupil-apriltags~=1.0.4.post10
 djitellopy2~=2.3
 pigpio~=1.78
-numpy~=1.26.4
 flask~=3.0.3
 pygame~=2.6.0
 yt-dlp
